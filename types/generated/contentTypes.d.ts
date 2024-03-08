@@ -788,6 +788,216 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.RichText & Attribute.Required;
+    time: Attribute.Time &
+      Attribute.Required &
+      Attribute.DefaultTo<'undefined'>;
+    source: Attribute.Relation<
+      'api::article.article',
+      'manyToOne',
+      'api::source.source'
+    >;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'Author';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    handle: Attribute.UID & Attribute.Required;
+    image: Attribute.Media;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    followersCount: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    description: Attribute.String;
+    background: Attribute.Media;
+    imageUrl: Attribute.String;
+    category: Attribute.String;
+    messages: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::message.message'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMessageMessage extends Schema.CollectionType {
+  collectionName: 'messages';
+  info: {
+    singularName: 'message';
+    pluralName: 'messages';
+    displayName: 'Message';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    text: Attribute.Text & Attribute.Required;
+    image: Attribute.Media;
+    time: Attribute.Time & Attribute.Required;
+    author: Attribute.Relation<
+      'api::message.message',
+      'manyToOne',
+      'api::author.author'
+    >;
+    likesCount: Attribute.Integer & Attribute.DefaultTo<0>;
+    replyTo: Attribute.Relation<
+      'api::message.message',
+      'manyToOne',
+      'api::message.message'
+    >;
+    replies: Attribute.Relation<
+      'api::message.message',
+      'oneToMany',
+      'api::message.message'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSourceSource extends Schema.CollectionType {
+  collectionName: 'sources';
+  info: {
+    singularName: 'source';
+    pluralName: 'sources';
+    displayName: 'Source';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    logo: Attribute.Media;
+    icon: Attribute.Media;
+    articles: Attribute.Relation<
+      'api::source.source',
+      'oneToMany',
+      'api::article.article'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::source.source',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::source.source',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrainingSessionTrainingSession
+  extends Schema.CollectionType {
+  collectionName: 'training_sessions';
+  info: {
+    singularName: 'training-session';
+    pluralName: 'training-sessions';
+    displayName: 'Training session';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    clientLogo: Attribute.Media & Attribute.Required;
+    firstMessageTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'08:00'>;
+    sessionStartTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'08:00'>;
+    lastMessageTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.DefaultTo<'08:00'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::training-session.training-session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::training-session.training-session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +1016,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::article.article': ApiArticleArticle;
+      'api::author.author': ApiAuthorAuthor;
+      'api::message.message': ApiMessageMessage;
+      'api::source.source': ApiSourceSource;
+      'api::training-session.training-session': ApiTrainingSessionTrainingSession;
     }
   }
 }

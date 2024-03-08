@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "training_sessions",
+  "info": {
+    "singularName": "training-session",
+    "pluralName": "training-sessions",
+    "displayName": "Training session"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientLogo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "firstMessageTime": {
+      "type": "time",
+      "required": true,
+      "unique": true,
+      "default": "08:00"
+    },
+    "sessionStartTime": {
+      "type": "time",
+      "required": true,
+      "unique": true,
+      "default": "08:00"
+    },
+    "lastMessageTime": {
+      "type": "time",
+      "required": true,
+      "unique": true,
+      "default": "08:00"
+    }
+  }
+}
