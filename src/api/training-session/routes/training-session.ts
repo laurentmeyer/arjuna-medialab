@@ -1,7 +1,12 @@
 /**
- * training-session router
+ * training-session router.
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreRouter('api::training-session.training-session');
+export default factories.createCoreRouter(
+  "api::training-session.training-session",
+  {
+    only: ["find"],
+  }
+);

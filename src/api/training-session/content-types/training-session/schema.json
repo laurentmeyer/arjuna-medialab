@@ -4,7 +4,8 @@
   "info": {
     "singularName": "training-session",
     "pluralName": "training-sessions",
-    "displayName": "Training session"
+    "displayName": "Training session",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,9 +13,6 @@
   "pluginOptions": {},
   "attributes": {
     "clientLogo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
       "required": true

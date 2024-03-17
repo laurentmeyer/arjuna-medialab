@@ -982,6 +982,7 @@ export interface ApiTrainingSessionTrainingSession extends Schema.SingleType {
     singularName: 'training-session';
     pluralName: 'training-sessions';
     displayName: 'Training session';
+    description: '';
   };
   options: {
     draftAndPublish: true;
