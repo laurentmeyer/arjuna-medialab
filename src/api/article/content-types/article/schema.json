@@ -9,7 +9,11 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "import-export-entries": {
+      "idField": "title"
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
@@ -31,9 +35,7 @@
       "inversedBy": "articles"
     },
     "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     }

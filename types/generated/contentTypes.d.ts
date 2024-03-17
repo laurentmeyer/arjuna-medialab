@@ -798,6 +798,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'title';
+    };
+  };
   attributes: {
     title: Attribute.String & Attribute.Required;
     content: Attribute.RichText & Attribute.Required;
@@ -837,6 +842,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'handle';
+    };
   };
   attributes: {
     handle: Attribute.UID & Attribute.Required;
@@ -882,6 +892,11 @@ export interface ApiMessageMessage extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'text';
+    };
   };
   attributes: {
     text: Attribute.Text & Attribute.Required;
@@ -929,6 +944,11 @@ export interface ApiSourceSource extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'name';
+    };
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;

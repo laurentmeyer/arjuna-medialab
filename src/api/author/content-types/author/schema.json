@@ -9,16 +9,18 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "import-export-entries": {
+      "idField": "handle"
+    }
+  },
   "attributes": {
     "handle": {
       "type": "uid",
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
@@ -37,9 +39,7 @@
       "type": "string"
     },
     "background": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     },
