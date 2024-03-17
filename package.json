@@ -1,11 +1,11 @@
 {
   "name": "arjuna-medialab",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "A Strapi application",
+  "description": "Arjuna medialab backoffice",
   "license": "MIT",
   "author": {
-    "name": "A Strapi developer"
+    "name": "Laurent Meyer"
   },
   "scripts": {
     "build": "strapi build",

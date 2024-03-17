@@ -20,7 +20,9 @@
       "required": true
     },
     "image": {
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false
     },
@@ -39,7 +41,9 @@
       "type": "string"
     },
     "background": {
-      "allowedTypes": ["images"],
+      "allowedTypes": [
+        "images"
+      ],
       "type": "media",
       "multiple": false
     },
@@ -53,6 +57,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::message.message",
+      "mappedBy": "author"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
       "mappedBy": "author"
     }
   }
