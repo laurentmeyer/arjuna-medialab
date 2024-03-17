@@ -976,8 +976,7 @@ export interface ApiSourceSource extends Schema.CollectionType {
   };
 }
 
-export interface ApiTrainingSessionTrainingSession
-  extends Schema.CollectionType {
+export interface ApiTrainingSessionTrainingSession extends Schema.SingleType {
   collectionName: 'training_sessions';
   info: {
     singularName: 'training-session';
@@ -985,24 +984,16 @@ export interface ApiTrainingSessionTrainingSession
     displayName: 'Training session';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     clientLogo: Attribute.Media & Attribute.Required;
-    firstMessageTime: Attribute.Time &
+    sessionStart: Attribute.DateTime &
       Attribute.Required &
-      Attribute.Unique &
-      Attribute.DefaultTo<'08:00'>;
-    sessionStartTime: Attribute.Time &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.DefaultTo<'08:00'>;
-    lastMessageTime: Attribute.Time &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.DefaultTo<'08:00'>;
+      Attribute.DefaultTo<'2024-01-12T07:00:00.000Z'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::training-session.training-session',
       'oneToOne',

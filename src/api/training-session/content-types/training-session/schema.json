@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "training_sessions",
   "info": {
     "singularName": "training-session",
@@ -7,7 +7,7 @@
     "displayName": "Training session"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -19,23 +19,10 @@
       "multiple": false,
       "required": true
     },
-    "firstMessageTime": {
-      "type": "time",
-      "required": true,
-      "unique": true,
-      "default": "08:00"
-    },
-    "sessionStartTime": {
-      "type": "time",
-      "required": true,
-      "unique": true,
-      "default": "08:00"
-    },
-    "lastMessageTime": {
-      "type": "time",
-      "required": true,
-      "unique": true,
-      "default": "08:00"
+    "sessionStart": {
+      "type": "datetime",
+      "default": "2024-01-12T07:00:00.000Z",
+      "required": true
     }
   }
 }
