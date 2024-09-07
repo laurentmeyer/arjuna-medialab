@@ -24,7 +24,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "time": {
       "type": "time",
@@ -51,6 +53,18 @@
       "relation": "oneToMany",
       "target": "api::message.message",
       "mappedBy": "replyTo"
+    },
+    "isRetweetOf": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::message.message",
+      "inversedBy": "retweets"
+    },
+    "retweets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message",
+      "mappedBy": "isRetweetOf"
     }
   }
 }

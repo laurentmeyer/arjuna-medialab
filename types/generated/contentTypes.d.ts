@@ -927,6 +927,16 @@ export interface ApiMessageMessage extends Schema.CollectionType {
       'oneToMany',
       'api::message.message'
     >;
+    isRetweetOf: Attribute.Relation<
+      'api::message.message',
+      'manyToOne',
+      'api::message.message'
+    >;
+    retweets: Attribute.Relation<
+      'api::message.message',
+      'oneToMany',
+      'api::message.message'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

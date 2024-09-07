@@ -41,6 +41,39 @@ export default factories.createCoreController(
               fields: ["id", "text", "time", "likesCount"],
               populate: {
                 replyTo: true,
+                retweets: true,
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+                author: {
+                  fields: ["id", "handle", "firstName", "lastName", "imageUrl"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+            retweets: {
+              fields: ["id", "text", "time", "likesCount"],
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+                author: {
+                  fields: ["id", "handle", "firstName", "lastName", "imageUrl"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+            isRetweetOf: {
+              fields: ["id", "text", "time", "likesCount"],
+              populate: {
                 image: {
                   fields: ["url", "alternativeText"],
                 },
@@ -94,6 +127,24 @@ export default factories.createCoreController(
               fields: ["id", "text", "time", "likesCount"],
               populate: {
                 replyTo: true,
+                retweets: true,
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+                author: {
+                  fields: ["id", "handle", "firstName", "lastName", "imageUrl"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+              },
+            },
+            retweets: true,
+            isRetweetOf: {
+              fields: ["id", "text", "time", "likesCount"],
+              populate: {
                 image: {
                   fields: ["url", "alternativeText"],
                 },

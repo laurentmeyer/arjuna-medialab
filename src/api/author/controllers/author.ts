@@ -50,6 +50,29 @@ export default factories.createCoreController(
                     },
                   },
                 },
+                retweets: true,
+                isRetweetOf: {
+                  fields: ["id", "text", "time", "likesCount"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                    author: {
+                      fields: [
+                        "id",
+                        "handle",
+                        "firstName",
+                        "lastName",
+                        "imageUrl",
+                      ],
+                      populate: {
+                        image: {
+                          fields: ["url", "alternativeText"],
+                        },
+                      },
+                    },
+                  },
+                },
               },
             },
           },
@@ -106,6 +129,29 @@ export default factories.createCoreController(
                     replyTo: true,
                     image: {
                       fields: ["url", "alternativeText"],
+                    },
+                  },
+                },
+                retweets: true,
+                isRetweetOf: {
+                  fields: ["id", "text", "time", "likesCount"],
+                  populate: {
+                    image: {
+                      fields: ["url", "alternativeText"],
+                    },
+                    author: {
+                      fields: [
+                        "id",
+                        "handle",
+                        "firstName",
+                        "lastName",
+                        "imageUrl",
+                      ],
+                      populate: {
+                        image: {
+                          fields: ["url", "alternativeText"],
+                        },
+                      },
                     },
                   },
                 },
